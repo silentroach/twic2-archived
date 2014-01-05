@@ -22,6 +22,8 @@
 				'nick': user.getNick()
 			} );
 		} );
+
+		return true;
 	} );
 
 }() );
