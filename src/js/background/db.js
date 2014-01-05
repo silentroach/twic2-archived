@@ -52,6 +52,7 @@ twic.db = ( function() {
 	}
 
 	return {
+		name: NAME,
 		put: putToCollection
 	};
 

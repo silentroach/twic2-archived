@@ -1,0 +1,42 @@
+# Twic Extension
+
+The opensource twitter client for Chromium based browsers.
+
+Built with **pure** javascript with no frameworks used, so it is lightweight and very fast.
+
+## Previous version
+
+I'm trying to completely rewrite the previous version. It can be [found here](https://github.com/silentroach/twic-archived).
+
+## How to prepare your developer version
+
+You need to install [NodeJS](http://nodejs.org/) and [grunt](http://gruntjs.com/getting-started).
+
+	git clone https://github.com/silentroach/twic.git
+	cd twic
+	npm install
+	grunt
+	
+Now you are ready to add the `src` folder to your Chrome extensions list (in developer mode).
+
+That's all you need to help me develop this awesome extension.
+
+## Database
+
+**Be carefull** to use git `master` branch version - automatic database migrations are described only between production versions.
+
+To remove the extension database you need to open background page console (click on the "background page" in Chrome extensions list page) and run this:
+
+	indexedDB.deleteDatabase(twic.db.name);
+
+## Thanks
+
+* [Paul Johnston](http://pajhome.org.uk) for SHA1 javascript implementation
+* Twitter for [Twitter Text](https://github.com/twitter/twitter-text-js) project
+* [GlyphIcons](http://glyphicons.com/) for amazing icons
+
+## Copyright
+
+[Kalashnikov Igor](mailto:igor.kalashnikov@me.com)
+
+This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
