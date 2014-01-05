@@ -6,9 +6,9 @@ Built with **pure** javascript with no frameworks used, so it is lightweight and
 
 ## Previous version
 
-I'm trying to completely rewrite the previous version. It can be [found here](https://github.com/silentroach/twic-archived).
+I'm trying to rewrite the previous version from scratch. It can be [found here](https://github.com/silentroach/twic-archived).
 
-## How to prepare your developer version
+## How to help
 
 You need to install [NodeJS](http://nodejs.org/) and [grunt](http://gruntjs.com/getting-started).
 
@@ -18,6 +18,8 @@ You need to install [NodeJS](http://nodejs.org/) and [grunt](http://gruntjs.com/
 	grunt
 	
 Now you are ready to add the `src` folder to your Chrome extensions list (in developer mode).
+
+Please respect the [EditorConfig](http://editorconfig.org/) project settings.
 
 That's all you need to help me develop this awesome extension.
 
