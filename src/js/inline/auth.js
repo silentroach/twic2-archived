@@ -26,16 +26,16 @@
 			};
 
 			event.send( function(result) {
-				debugger;
-
-				if (undefined !== result['error']) {
+				if (undefined !== result['error']
+					|| !result.name
+				) {
 					if (result['error'] === twic.global.ALREADY_AUTHENTICATED) {
 						changeResultText('auth_already');
 					} else {
 						changeResultText('auth_failed');
 					}
 				} else {
-					changeResultText('auth_success', result['nick']);
+					changeResultText('auth_success', result['name']);
 				}
 			} );
 		}

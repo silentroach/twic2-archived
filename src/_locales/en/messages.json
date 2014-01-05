@@ -1,19 +1,19 @@
 {
 	"auth_in_progress": {
-		"message": "authenticating...",
+		"message": "Authenticating...",
 		"description": "Inline page authentication progress status"
 	},
 	"auth_already": {
-		"message": "account is already authenticated",
+		"message": "Account is already authenticated.",
 		"description": "Inline page authentication progress status"
 	},
 	"auth_success": {
-		"message": "thank you, $nick$!",
+		"message": "Thank you, $name$! Now you can close this window.",
 		"description": "Inline page authentication progress status",
 		"placeholders": {
-			"nick": {
+			"name": {
 				"content": "$1",
-				"example": "@silentroach"
+				"example": "Igor"
 			}
 		}
 	}

@@ -19,7 +19,7 @@
 			}
 
 			callback( {
-				'nick': user.getNick()
+				'name': user.name
 			} );
 		} );
 
