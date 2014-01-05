@@ -10,18 +10,16 @@ I'm trying to rewrite the previous version from scratch. It can be [found here](
 
 ## How to help
 
-You need to install [NodeJS](http://nodejs.org/) and [grunt](http://gruntjs.com/getting-started).
+You need to install [NodeJS](http://nodejs.org/) and [grunt](http://gruntjs.com/getting-started) and run this:
 
 	git clone https://github.com/silentroach/twic.git
 	cd twic
 	npm install
 	grunt
 	
-Now you are ready to add the `src` folder to your Chrome extensions list (in developer mode).
+Then you need to add the `src` folder to your Chrome extensions list in developer mode.
 
 Please respect the [EditorConfig](http://editorconfig.org/) project settings.
-
-That's all you need to help me develop this awesome extension.
 
 ## Database
 
