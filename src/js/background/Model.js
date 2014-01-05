@@ -32,8 +32,7 @@ twic.Model.prototype.save = function(callback) {
 
 twic.Model.prototype.isFresh = function() {
 	var
-		freshTime = this.constructor.freshTime || 60 * 60,
-		now = Math.round(+new Date() / 1000);
+		freshTime = this.constructor.freshTime || 60 * 60;
 
-	return this.updateTime + freshTime
+	return this.updateTime + freshTime > Math.round(+new Date() / 1000);
 };

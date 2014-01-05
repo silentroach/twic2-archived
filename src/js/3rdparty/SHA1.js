@@ -19,7 +19,7 @@ var SHA1 = ( function() {
 	// Determine the appropriate additive constant for the current iteration
 	function kt(t) {
 		return (t < 20) ? 1518500249 : (t < 40) ? 1859775393 : (t < 60) ? -1894007588 : -899497514;
-	};
+	}
 
 	// Calculate the SHA-1 of an array of big-endian words, and a bit length
 	function coreSHA1(x, len) {
@@ -109,7 +109,7 @@ var SHA1 = ( function() {
 		}
 
 		return new Array(a, b, c, d, e);
-	};
+	}
 
 	// Convert an 8-bit or 16-bit string to an array of big-endian words
 	// In 8-bit function, characters >255 have their hi-byte silently ignored.
@@ -124,7 +124,7 @@ var SHA1 = ( function() {
 		}
 
 		return bin;
-	};
+	}
 
 	// Calculate the HMAC-SHA1 of a key and some data
 	function coreHMACSHA1(key, data) {
@@ -144,7 +144,7 @@ var SHA1 = ( function() {
 		}
 
 		return coreSHA1(opad.concat(coreSHA1(ipad.concat(strToBinB(data)), 512 + data.length * bitsPerChar)), 512 + 160);
-	};
+	}
 
 	// Convert an array of big-endian words to a base-64 string
 	function binBToBase64(binarray) {
@@ -170,7 +170,7 @@ var SHA1 = ( function() {
 		}
 
 		return str;
-	};
+	}
 
 	return {
 		encode: function(key, data) {
