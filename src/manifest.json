@@ -1,0 +1,60 @@
+{
+	"name": "Twic",
+	"description": "Twitter client",
+	"manifest_version": 2,
+	"version": "0.70",
+	"default_locale": "en",
+	"browser_action": {
+		"default_icon": {
+			"19": "img/toolbar.png",
+			"38": "img/toolbar@2x.png"
+		}
+	},
+	"background": {
+		"scripts": [
+			"js/_init.js",
+			"js/3rdparty/SHA1.js",
+			"js/common/global.js",
+			"js/common/Event.js",
+			"js/common/Event/Emitter.js",
+			"js/common/Event/Dispatcher.js",
+			"js/common/utils.js",
+			"js/common/Error.js",
+			"js/background/keys.js",
+			"js/background/Request.js",
+			"js/background/Request/Error.js",
+			"js/background/Request/OAuth.js",
+			"js/background/twitter.js",
+			"js/background/twitter/api.js",
+			"js/background/twitter/api/Token.js",
+			"js/background/Model.js",
+			"js/background/User.js",
+			"js/background/Account/List.js",
+			"js/background/db.js",
+
+			"js/background.js"
+		]
+	},
+	"content_scripts": [ {
+		"matches": [
+			"https://api.twitter.com/oauth/authorize"
+		],
+		"js": [
+			"js/_init.js",
+			"js/common/global.js",
+			"js/common/Event.js",
+			"js/common/i18n.js",
+			"js/inline/auth.js"
+		],
+		"css": [
+			"css/inline/auth.css"
+		]
+	} ],
+	"permissions": [
+		"storage",
+		"tabs",
+
+		"https://api.twitter.com/1/*",
+		"https://twitter.com/oauth/*"
+	]
+}

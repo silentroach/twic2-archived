@@ -1,0 +1,20 @@
+{
+	"auth_in_progress": {
+		"message": "авторизация...",
+		"description": "Статус на странице авторизации"
+	},
+	"auth_already": {
+		"message": "учетная запись уже авторизована",
+		"description": "Статус на странице авторизации"
+	},
+	"auth_success": {
+		"message": "спасибо, $nick$!",
+		"description": "Статус на странице авторизации",
+		"placeholders": {
+			"nick": {
+				"content": "$1",
+				"example": "@silentroach"
+			}
+		}
+	}
+}
