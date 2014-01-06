@@ -53,13 +53,15 @@ twic.AccountList.prototype.load = function(callback) {
 	var
 		list = this,
 		data = { },
-		item, i, key, account;
+		item, account;
 
 	async.forEach( [
 		this.storage,
 		this.secureStorage
 	], function(storage, callback) {
 		storage.get(twic.AccountList.KEY, function(items) {
+			var i, key;
+
 			if (undefined === items[twic.AccountList.KEY]) {
 				callback();
 				return;
@@ -80,6 +82,8 @@ twic.AccountList.prototype.load = function(callback) {
 			callback();
 		} );
 	}, function() {
+		var i;
+
 		for (i in data) {
 			account = new twic.Account();
 			account.deserialize(data[i]);

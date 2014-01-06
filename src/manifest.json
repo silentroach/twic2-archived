@@ -14,6 +14,7 @@
 		"scripts": [
 			"js/_init.js",
 			"js/3rdparty/SHA1.js",
+			"js/3rdparty/async.js",
 			"js/common/global.js",
 			"js/common/Event.js",
 			"js/common/Event/Emitter.js",
@@ -21,7 +22,6 @@
 			"js/common/utils.js",
 			"js/common/Error.js",
 			"js/background/keys.js",
-			"js/background/async.js",
 			"js/background/Request.js",
 			"js/background/Request/Error.js",
 			"js/background/Request/OAuth.js",

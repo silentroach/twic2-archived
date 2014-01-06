@@ -6,7 +6,7 @@ module.exports = function(grunt) {
 			all: {
 				src: [
 					'src/js/**/*.js',
-					// excluding generated js files
+					'!src/js/3rdparty/*.js',
 					'!src/js/_generated/*.js'
 				]
 			},

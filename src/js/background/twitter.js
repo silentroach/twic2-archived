@@ -53,7 +53,7 @@ twic.twitter.authorize = function(pin, callback) {
 				model.save(finished);
 			}, function() {
 				callback(null, token, user);
-			} )
+			} );
 		} );
 	} );
 };

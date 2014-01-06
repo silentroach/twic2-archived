@@ -32,7 +32,8 @@ To remove the extension database you need to open background page console (click
 ## Thanks
 
 * [Paul Johnston](http://pajhome.org.uk) for SHA1 javascript implementation
-* Twitter for [Twitter Text](https://github.com/twitter/twitter-text-js) project
+* Twitter for [Twitter Text](https://github.com/twitter/twitter-text-js) project (some regexps are used in project)
+* Caolan McMahon for [Async](https://github.com/caolan/async) NodeJS module (`forEach` and `forEachSeries` methods used in project)
 * [GlyphIcons](http://glyphicons.com/) for amazing icons
 
 ## Copyright

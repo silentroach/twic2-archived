@@ -43,4 +43,4 @@ twic.Tweet.prototype.deserialize = function(data) {
 	this.rawText = data['rawText'];
 	this.createdStamp = data['createdStamp'];
 	this.source = data['source'];
-}
+};

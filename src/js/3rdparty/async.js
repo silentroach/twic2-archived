@@ -1,3 +1,7 @@
+/**
+ * Part of ASync Node.js module
+ * http://github.com/caolan/async/downloads
+ */
 var async = { };
 
 /**
@@ -27,7 +31,7 @@ async.forEach = function (arr, iterator, callback) {
                 }
             }
         } );
-    };
+    }
 };
 
 /**
@@ -45,7 +49,7 @@ async.forEachSeries = function(arr, iterator, callback) {
         aLen = arr.length,
         completed = 0;
 
-    var iterate = function () {
+    function iterate() {
         iterator(arr[completed], function (err) {
             if (err) {
                 callback(err);
@@ -60,7 +64,7 @@ async.forEachSeries = function(arr, iterator, callback) {
                 }
             }
         } );
-    };
+    }
 
     iterate();
 };
