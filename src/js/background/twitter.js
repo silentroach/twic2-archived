@@ -22,15 +22,17 @@ twic.twitter.startAuthentication = function(login) {
 };
 
 twic.twitter.authorize = function(pin, callback) {
-	var user;
+	var
+		models = [ ],
+		user, tweet;
 
-	twic.twitter.api.getAccessToken(pin, function(error, data) {
+	twic.twitter.api.getAccessToken(pin, function(error, token, userId) {
 		if (error) {
 			callback(error);
 			return;
 		}
 
-		twic.twitter.api.getUserInfo(data['user_id'], function(error, userObj) {
+		twic.twitter.api.getUserInfo(userId, function(error, userObj) {
 			if (error) {
 				callback(error);
 				return;
@@ -38,9 +40,20 @@ twic.twitter.authorize = function(pin, callback) {
 
 			user = new twic.User();
 			user.fillFromJSON(userObj);
-			user.save( function() {
-				callback(null, user);
-			} );
+			models.push(user);
+
+			if (userObj['status']) {
+				tweet = new twic.Tweet();
+				tweet.fillFromJSON(userObj['status']);
+				tweet.userId = user.id;
+				models.push(tweet);
+			}
+
+			async.forEachSeries(models, function(model, finished) {
+				model.save(finished);
+			}, function() {
+				callback(null, token, user);
+			} )
 		} );
 	} );
 };

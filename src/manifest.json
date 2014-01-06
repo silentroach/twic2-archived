@@ -30,6 +30,8 @@
 			"js/background/twitter/api/Token.js",
 			"js/background/Model.js",
 			"js/background/User.js",
+			"js/background/Tweet.js",
+			"js/background/Account.js",
 			"js/background/Account/List.js",
 			"js/background/db.js",
 

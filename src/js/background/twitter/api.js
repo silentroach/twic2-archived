@@ -60,10 +60,25 @@ twic.twitter.api.getAccessToken = function(pin, callback) {
 		request.setRequestData('oauth_verifier', pin);
 
 		request.send( function(error, request) {
+			var
+				obj, token;
+
 			if (!error) {
-				callback(
-					null, twic.Request.queryStringToObject(request.responseText)
-				);
+				obj = twic.Request.queryStringToObject(request.responseText);
+
+				if (undefined === obj['oauth_token']
+					|| undefined === obj['oauth_token_secret']
+				) {
+					error = new twic.Error();
+				}
+			}
+
+			if (!error) {
+				token = new twic.twitter.api.Token();
+				token.token = obj['oauth_token'];
+				token.tokenSecret = obj['oauth_token_secret'];
+
+				callback(null, token, obj['user_id']);
 			} else {
 				if (twic.Request.Error.UNAUTHORIZED === error.code) {
 					twic.twitter.api.resetToken();

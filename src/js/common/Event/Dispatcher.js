@@ -2,6 +2,10 @@ twic.EventDispatcher = function() {
 	this.listeners = { };
 };
 
+/**
+ * Message processing
+ * @param {Function} callback Must return true if sendResponse used async
+ */
 twic.EventDispatcher.prototype.on = function(type, callback) {
 	this.listeners[type] = callback;
 };

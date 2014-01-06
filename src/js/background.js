@@ -1,7 +1,10 @@
 ( function() {
 
 	var
-		accounts = new twic.AccountList(),
+		accounts = new twic.AccountList(
+			chrome.storage.sync,
+			chrome.storage.local
+		),
 		dispatcher = new twic.EventDispatcher();
 
 	chrome.runtime.onMessage.addListener(
@@ -9,7 +12,10 @@
 	);
 
 	dispatcher.on('auth', function(event, callback) {
-		twic.twitter.authorize(event.data['pin'], function(error, user) {
+		var
+			account;
+
+		twic.twitter.authorize(event.data['pin'], function(error, token, user) {
 			if (error) {
 				callback( {
 					'error': twic.global.ERROR
@@ -18,12 +24,23 @@
 				return;
 			}
 
-			callback( {
-				'name': user.name
+			account = new twic.Account();
+			account.oauthToken = token;
+			account.userId = user.id;
+			accounts.add(account);
+
+			accounts.save( function() {
+				callback( {
+					'name': user.name
+				} );
 			} );
 		} );
 
 		return true;
+	} );
+
+	accounts.load( function() {
+		console.log('loaded');
 	} );
 
 }() );
