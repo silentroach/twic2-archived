@@ -10,7 +10,7 @@ I'm trying to rewrite the previous version from scratch. It can be [found here](
 
 ## How to help
 
-You need to install [NodeJS](http://nodejs.org/) and [grunt](http://gruntjs.com/getting-started) and run this:
+You need to install [NodeJS](http://nodejs.org/), [grunt](http://gruntjs.com/getting-started) and run this:
 
 	git clone https://github.com/silentroach/twic.git
 	cd twic
@@ -25,7 +25,7 @@ Please respect the [EditorConfig](http://editorconfig.org/) project settings.
 
 **Be carefull** to use git `master` branch version - automatic database migrations are described only between production versions.
 
-To remove the extension database you need to open background page console (click on the "background page" in Chrome extensions list page) and run this:
+To remove the extension database you need to open background page console (click on the "background page" link in Chrome extensions list page) and run this:
 
 	indexedDB.deleteDatabase(twic.db.name);
 
