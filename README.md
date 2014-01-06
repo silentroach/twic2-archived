@@ -16,7 +16,7 @@ You need to install [NodeJS](http://nodejs.org/), [grunt](http://gruntjs.com/get
 	cd twic
 	npm install
 	grunt
-	
+
 Then you need to add the `src` folder to your Chrome extensions list in developer mode.
 
 Please respect the [EditorConfig](http://editorconfig.org/) project settings.
@@ -33,7 +33,7 @@ To remove the extension database you need to open background page console (click
 
 * [Paul Johnston](http://pajhome.org.uk) for SHA1 javascript implementation
 * Twitter for [Twitter Text](https://github.com/twitter/twitter-text-js) project (some regexps are used in project)
-* Caolan McMahon for [Async](https://github.com/caolan/async) NodeJS module (`forEach` and `forEachSeries` methods used in project)
+* Caolan McMahon for [Async](https://github.com/caolan/async) NodeJS module (`forEach` and `forEachSeries` methods are used in project)
 * [GlyphIcons](http://glyphicons.com/) for amazing icons
 
 ## Copyright
