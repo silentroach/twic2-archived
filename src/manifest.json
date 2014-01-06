@@ -21,6 +21,7 @@
 			"js/common/utils.js",
 			"js/common/Error.js",
 			"js/background/keys.js",
+			"js/background/async.js",
 			"js/background/Request.js",
 			"js/background/Request/Error.js",
 			"js/background/Request/OAuth.js",
