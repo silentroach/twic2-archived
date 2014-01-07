@@ -9,5 +9,5 @@ twic.Timestamp = function(timestamp) {
  * @return {Number}
  */
 twic.Timestamp.now = function() {
-	return Math.round(+new DateTime() / 1000);
+	return Math.round(+new Date() / 1000);
 };

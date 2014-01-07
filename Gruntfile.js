@@ -12,12 +12,12 @@ module.exports = function(grunt) {
 			},
 			options: {
 				sub: true,       // suppress warnings about dot notation
+				esnext: true,    // suppress warnings about ecmascript 6 specific syntax
 				laxbreak: true,  // suppress warnings about unsafe line breakings
 				curly: true,     // require curly braces on every block
 				eqeqeq: true,    // require strict comparison
 				immed: true,     // ( function(){}() );
 				latedef: true,   // prohibit variable use before definition.
-				onevar: true,    // use one var statement
 				trailing: true,  // prohibit trailing whitespaces
 				boss: true       // suppress assignments instead of comparisons
 			}

@@ -1,9 +1,9 @@
 twic.db = ( function() {
 
-	var
-		VERSION = 1,
-		NAME = 'twic',
-		db;
+	const VERSION = 1;
+	const NAME = 'twic';
+
+	var db;
 
 	function onUpgradeNeeded(event) {
 		var

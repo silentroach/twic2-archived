@@ -14,7 +14,8 @@ var SHA1 = ( function() {
 	 * Configurable variables. You may need to tweak these to be compatible with
 	 * the server-side, but the defaults work in most cases.
 	 */
-	var bitsPerChar = 8;  /* bits per input character. 8 - ASCII; 16 - Unicode */
+	const BITS_PER_CHAR = 8;  /* bits per input character. 8 - ASCII; 16 - Unicode */
+	const TAB = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 
 	// Determine the appropriate additive constant for the current iteration
 	function kt(t) {
@@ -116,11 +117,11 @@ var SHA1 = ( function() {
 	function strToBinB(str) {
 		var
 			bin = [],
-			mask = (1 << bitsPerChar) - 1,
+			mask = (1 << BITS_PER_CHAR) - 1,
 			i;
 
-		for(i = 0; i < str.length * bitsPerChar; i += bitsPerChar) {
-			bin[i>>5] |= (str.charCodeAt(i / bitsPerChar) & mask) << (32 - bitsPerChar - i%32);
+		for(i = 0; i < str.length * BITS_PER_CHAR; i += BITS_PER_CHAR) {
+			bin[i>>5] |= (str.charCodeAt(i / BITS_PER_CHAR) & mask) << (32 - BITS_PER_CHAR - i%32);
 		}
 
 		return bin;
@@ -135,7 +136,7 @@ var SHA1 = ( function() {
 			i;
 
 		if (bkey.length > 16) {
-			bkey = coreSHA1(bkey, key.length * bitsPerChar);
+			bkey = coreSHA1(bkey, key.length * BITS_PER_CHAR);
 		}
 
 		for(i = 0; i < 16; i++) {
@@ -143,14 +144,12 @@ var SHA1 = ( function() {
 			opad[i] = bkey[i] ^ 0x5C5C5C5C;
 		}
 
-		return coreSHA1(opad.concat(coreSHA1(ipad.concat(strToBinB(data)), 512 + data.length * bitsPerChar)), 512 + 160);
+		return coreSHA1(opad.concat(coreSHA1(ipad.concat(strToBinB(data)), 512 + data.length * BITS_PER_CHAR)), 512 + 160);
 	}
 
 	// Convert an array of big-endian words to a base-64 string
 	function binBToBase64(binarray) {
 		var
-			TAB = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/",
-			// ---
 			str = "",
 			triplet, i, j;
 
