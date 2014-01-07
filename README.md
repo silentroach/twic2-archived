@@ -1,4 +1,5 @@
 # Twic Extension
+[![Dependency Status](https://gemnasium.com/silentroach/twic.png)](https://gemnasium.com/silentroach/twic)
 
 The opensource twitter client for Chromium based browsers.
 
