@@ -44,7 +44,7 @@ twic.AccountList.prototype.load = function(callback) {
 
 		for (i in item) {
 			account = new twic.Account();
-			account.deserialize(item);
+			account.deserialize(item[i]);
 
 			list.add(account);
 		}
