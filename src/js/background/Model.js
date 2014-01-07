@@ -45,7 +45,7 @@ twic.Model.prototype.save = function(callback) {
 	var
 		model = this;
 
-	model.updateTime = Math.round(+new Date() / 1000);
+	model.updateTime = twic.Timestamp.now();
 
 	twic.db.put(this.constructor.collectionName, model.serialize(), function(error) {
 		if (error) {
