@@ -2,6 +2,8 @@ twic.Account = function() {
 	this.userId = null;
 	this.oauthToken = null;
 	this.lastVisibleTweet = 0;
+
+	this.user = null;
 };
 
 twic.Account.prototype.isAuthorized = function() {
@@ -30,4 +32,25 @@ twic.Account.prototype.deserialize = function(data) {
 		this.oauthToken.token = data['oauthToken'];
 		this.oauthToken.tokenSecret = data['oauthTokenSecret'];
 	}
+};
+
+/**
+ * @param {Function(twic.User)} callback
+ */
+twic.Account.prototype.getUser = function(callback) {
+	var
+		account = this;
+
+	if (account.user) {
+		callback(account.user);
+		return;
+	}
+
+	twitter.getUser(account.userId, function(error, user) {
+		if (!error) {
+			account.user = user;
+		}
+
+		callback(error, user);
+	} );
 };

@@ -1,4 +1,6 @@
 twic.User = function() {
+	twic.Model.call(this);
+
 	this.nick = null;
 	this.name = null;
 	this.description = null;
@@ -59,8 +61,8 @@ twic.User.prototype.serialize = function() {
 	return obj;
 };
 
-twic.User.prototype.deserialize = function(data) {
-	twic.Model.prototype.deserialize.call(this, data);
+twic.User.prototype.deserialize = function(obj) {
+	twic.Model.prototype.deserialize.call(this, obj);
 
 	this.nick = obj['nick'];
 	this.name = obj['name'];

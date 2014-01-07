@@ -1,4 +1,6 @@
 twic.Tweet = function() {
+	twic.Model.call(this);
+
 	this.userId = null;
 	this.rawText = null;
 

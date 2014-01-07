@@ -49,15 +49,38 @@ twic.db = ( function() {
 
 	function putToCollection(collection, object, callback) {
 		getObjectStore(collection, 'readwrite', function(collection) {
-			collection.put(object).onsuccess = function(event) {
+			var
+				request = collection.put(object);
+
+			request.onerror = function(event) {
+				callback(request.result); // ?
+			};
+
+			request.onsuccess = function(event) {
 				callback();
+			};
+		} );
+	}
+
+	function getFromCollection(collection, id, callback) {
+		getObjectStore(collection, 'readonly', function(collection) {
+			var
+				request = collection.get(id);
+
+			request.onerror = function(event) {
+				callback(request.result);
+			};
+
+			request.onsuccess = function(event) {
+				callback(null, request.result);
 			};
 		} );
 	}
 
 	return {
 		name: NAME,
-		put: putToCollection
+		put: putToCollection,
+		get: getFromCollection
 	};
 
 }() );
