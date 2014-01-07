@@ -46,3 +46,7 @@ twic.Tweet.prototype.deserialize = function(data) {
 	this.createdStamp = data['createdStamp'];
 	this.source = data['source'];
 };
+
+twic.Tweet.prototype.isFresh = function() {
+	return true;
+};
