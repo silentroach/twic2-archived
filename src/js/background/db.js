@@ -11,13 +11,10 @@ twic.db = ( function() {
 			store;
 
 		if (event.newVersion === 1) {
-			store = db.createObjectStore(twic.User.collectionName, { keyPath: 'id' } );
-			store.createIndex('nick', 'nick', { unique: true });
-			store.createIndex('updateTime', 'updateTime', { unique: false });
-
-			store = db.createObjectStore(twic.Tweet.collectionName, { keyPath: 'id' } );
-			store.createIndex('id', ['createdStamp', 'id'], { unique: true });
-			store.createIndex('updateTime', 'updateTime', { unique: false });
+			db.createObjectStore(twic.User.collectionName, { keyPath: 'id' } );
+			db.createObjectStore(twic.Tweet.collectionName, { keyPath: 'id' } );
+			db.createObjectStore(twic.Timeline.collectionName, { autoIncrement: true });
+			db.createObjectStore(twic.Mentions.collectionName, { autoIncrement: true });
 		}
 	}
 

@@ -1,3 +1,7 @@
+/**
+ * @constructor
+ * @extends twic.Model
+ */
 twic.Tweet = function() {
 	twic.Model.call(this);
 
@@ -9,6 +13,9 @@ twic.Tweet = function() {
 	this.source = null;
 };
 
+/**
+ * @constant
+ */
 twic.Tweet.collectionName = 'tweets';
 
 twic.utils.inherits(twic.Tweet, twic.Model);

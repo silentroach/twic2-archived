@@ -1,3 +1,6 @@
+/**
+ * @constructor
+ */
 twic.ModelList = function() {
 
 };
