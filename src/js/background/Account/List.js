@@ -15,7 +15,8 @@ twic.AccountList.prototype.add = function(account) {
 twic.AccountList.prototype.save = function(callback) {
 	var
 		obj = { },
-		data = { };
+		data = { },
+		i;
 
 	for (i in this.accounts) {
 		data[i] = this.accounts[i].serialize();
@@ -28,10 +29,12 @@ twic.AccountList.prototype.save = function(callback) {
 
 twic.AccountList.prototype.load = function(callback) {
 	var
-		list = this,
-		account, item, i;
+		list = this;
 
 	list.storage.get(twic.AccountList.KEY, function(items) {
+		var
+			account, item, i;
+
 		if (undefined === items[twic.AccountList.KEY]) {
 			callback();
 			return;
