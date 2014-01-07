@@ -11,22 +11,14 @@ twic.Account.prototype.isAuthorized = function() {
 twic.Account.prototype.serialize = function() {
 	return {
 		'userId': this.userId,
-		'lastVisibleTweet': this.lastVisibleTweet
-	};
-};
-
-/**
- * Secure data is managed by local storage
- */
-twic.Account.prototype.serializeSecure = function() {
-	return {
+		'lastVisibleTweet': this.lastVisibleTweet,
 		'oauthToken': this.oauthToken.token,
 		'oauthTokenSecret': this.oauthToken.tokenSecret
 	};
 };
 
 /**
- * Deserialization is made from both local and sync storages data
+ * Deserialize data from storage
  * @param {Object} data
  */
 twic.Account.prototype.deserialize = function(data) {

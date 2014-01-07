@@ -1,9 +1,8 @@
-twic.AccountList = function(storage, secureStorage) {
+twic.AccountList = function(storage) {
 	this.accounts = { };
 	this.length = 0;
 
 	this.storage = storage;
-	this.secureStorage = secureStorage;
 };
 
 twic.AccountList.KEY = 'accounts';
@@ -15,78 +14,34 @@ twic.AccountList.prototype.add = function(account) {
 
 twic.AccountList.prototype.save = function(callback) {
 	var
-		list = this,
-		data = { },
-		secureData = { },
-		i;
+		obj = { },
+		data = { };
 
-	for (i in list.accounts) {
-		data[i] = list.accounts[i].serialize();
-		secureData[i] = list.accounts[i].serializeSecure();
+	for (i in this.accounts) {
+		data[i] = this.accounts[i].serialize();
 	}
 
-	async.forEach( [
-		function(callback) {
-			var
-				obj = { };
+	obj[twic.AccountList.KEY] = data;
 
-			obj[twic.AccountList.KEY] = data;
-
-			list.storage.set(obj, callback);
-		},
-		function(callback) {
-			var
-				obj = { };
-
-			obj[twic.AccountList.KEY] = secureData;
-
-			list.secureStorage.set(obj, callback);
-		}
-	], function(func, callback) {
-		func(callback);
-	}, function() {
-		callback();
-	} );
+	this.storage.set(obj, callback);
 };
 
 twic.AccountList.prototype.load = function(callback) {
 	var
 		list = this,
-		data = { },
-		item, account;
+		account, item, i;
 
-	async.forEach( [
-		this.storage,
-		this.secureStorage
-	], function(storage, callback) {
-		storage.get(twic.AccountList.KEY, function(items) {
-			var i, key;
-
-			if (undefined === items[twic.AccountList.KEY]) {
-				callback();
-				return;
-			}
-
-			item = items[twic.AccountList.KEY];
-
-			for (i in item) {
-				if (undefined === data[i]) {
-					data[i] = { };
-				}
-
-				for (key in item[i]) {
-					data[i][key] = item[i][key];
-				}
-			}
-
+	list.storage.get(twic.AccountList.KEY, function(items) {
+		if (undefined === items[twic.AccountList.KEY]) {
 			callback();
-		} );
-	}, function() {
-		var i;
+			return;
+		}
 
-		for (i in data) {
+		item = items[twic.AccountList.KEY];
+
+		for (i in item) {
 			account = new twic.Account();
-			account.deserialize(data[i]);
+			account.deserialize(item);
 
 			list.add(account);
 		}
