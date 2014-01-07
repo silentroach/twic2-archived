@@ -26,7 +26,7 @@ twic.Account.prototype.deserialize = function(data) {
 	this.lastVisibleTweet = data['lastVisibleTweet'];
 
 	if (data['oauthToken'] && data['oauthTokenSecret']) {
-		this.oauthToken = new twic.twitter.api.Token();
+		this.oauthToken = new twic.Request.OAuth.Token();
 		this.oauthToken.token = data['oauthToken'];
 		this.oauthToken.tokenSecret = data['oauthTokenSecret'];
 	}

@@ -22,7 +22,7 @@ twic.twitter.api.getRequestToken = function(callback) {
 	request.send( function(error, request) {
 		if (!error) {
 			var
-				token = new twic.twitter.api.Token(),
+				token = new twic.Request.OAuth.Token(),
 				obj = twic.Request.queryStringToObject(request.responseText);
 
 			token.token = obj['oauth_token'];
@@ -74,7 +74,7 @@ twic.twitter.api.getAccessToken = function(pin, callback) {
 			}
 
 			if (!error) {
-				token = new twic.twitter.api.Token();
+				token = new twic.Request.OAuth.Token();
 				token.token = obj['oauth_token'];
 				token.tokenSecret = obj['oauth_token_secret'];
 
@@ -86,7 +86,7 @@ twic.twitter.api.getAccessToken = function(pin, callback) {
 
 				callback(error);
 			}
-		}, token.token, token.tokenSecret);
+		}, token);
 	} );
 };
 

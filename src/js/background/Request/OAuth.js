@@ -50,7 +50,10 @@ twic.Request.OAuth.prototype.getData = function() {
 	return data;
 };
 
-twic.Request.OAuth.prototype.sign = function(token, tokenSecret) {
+/**
+ * @param {twic.Request.OAuth.Token}
+ */
+twic.Request.OAuth.prototype.sign = function(token) {
 	var
 		request = this,
 		baseString = request.method + '&' + twic.Request.encodeString(request.url) + '&';
@@ -66,7 +69,7 @@ twic.Request.OAuth.prototype.sign = function(token, tokenSecret) {
 	request.setOAuthData('oauth_nonce', twic.Request.OAuth.getNonce());
 
 	if (token) {
-		request.setOAuthData('oauth_token', token);
+		request.setOAuthData('oauth_token', token.token);
 	}
 
 	// tis important to sort params
@@ -75,7 +78,7 @@ twic.Request.OAuth.prototype.sign = function(token, tokenSecret) {
 	request.setOAuthData(
 		'oauth_signature',
 		SHA1.encode(
-			twic.Request.encodeString(twic.keys.CONSUMER_SECRET) + '&' + (tokenSecret ? twic.Request.encodeString(tokenSecret) : ''),
+			twic.Request.encodeString(twic.keys.CONSUMER_SECRET) + '&' + (token ? twic.Request.encodeString(token.tokenSecret) : ''),
 			baseString
 		)
 	);
@@ -112,16 +115,14 @@ twic.Request.OAuth.prototype.checkTimestamp = function(req) {
 	return false;
 };
 
-twic.Request.OAuth.prototype.send = function(callback, token, tokenSecret) {
+twic.Request.OAuth.prototype.send = function(callback, token) {
 	var
 		isRetry = false,
 		request = this;
 
 	function sendRequest() {
-		if (token
-			&& tokenSecret
-		) {
-			request.sign(token, tokenSecret);
+		if (token) {
+			request.sign(token);
 		} else {
 			request.sign();
 		}

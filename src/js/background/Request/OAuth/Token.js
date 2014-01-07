@@ -1,4 +1,4 @@
-twic.twitter.api.Token = function() {
+twic.Request.OAuth.Token = function() {
 	this.token = null;
 	this.tokenSecret = null;
 };
