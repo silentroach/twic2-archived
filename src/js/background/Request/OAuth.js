@@ -8,8 +8,6 @@ twic.utils.inherits(twic.Request.OAuth, twic.Request);
 
 // ---
 
-twic.Request.OAuth.NONCE_CHARS = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz';
-
 twic.Request.OAuth.timestampOffset = 0;
 
 // ---
@@ -19,10 +17,10 @@ twic.Request.OAuth.getNonce = function() {
 		result = '',
 		i;
 
+	const NONCE_CHARS = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz';
+
 	for (i = 0; i < 32; ++i) {
-		result += twic.Request.OAuth.NONCE_CHARS[
-			Math.floor(Math.random() * twic.Request.OAuth.NONCE_CHARS.length)
-		];
+		result += NONCE_CHARS[Math.floor(Math.random() * NONCE_CHARS.length)];
 	}
 
 	return result;
