@@ -1,0 +1,17 @@
+html, body, div, span, h1, h2, h3, p, blockquote, pre,
+a, code, em, img, small, strike, strong, sub, sup, b, u, i, center,
+ol, ul, li, fieldset {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    }
+
+body {
+    line-height: 1;
+    }
+
+ol, ul {
+    list-style: none;
+    }
