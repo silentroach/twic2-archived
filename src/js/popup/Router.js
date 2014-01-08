@@ -45,18 +45,25 @@ twic.Router.prototype.changePage = function(path) {
 	var
 		pathParts = path.split('/');
 
+	pathParts.shift();
+
 	if (this.currentPage !== pathParts[0]) {
 		if (this.currentPage) {
 			this.pages[this.currentPage].suspend();
 		}
 
 		this.currentPage = pathParts[0];
+		this.currentPath = null;
 		this.pages[this.currentPage].activate();
 	}
 
 	if (this.currentPath !== path) {
-		this.currentPath = path;
+		if (pathParts.length > 1
+			|| this.currentPath
+		) {
+			this.pages[this.currentPage].handleParams(pathParts);
+		}
 
-		this.pages[this.currentPage].handleParams(pathParts);
+		this.currentPath = path;
 	}
 };

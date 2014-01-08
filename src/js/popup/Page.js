@@ -13,3 +13,7 @@ twic.Page.prototype.activate = function() {
 twic.Page.prototype.initialize = function() {
 	this.initialized = true;
 };
+
+twic.Page.prototype.handleParams = function(params) {
+
+};
