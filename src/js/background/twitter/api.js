@@ -3,6 +3,8 @@ twic.twitter.api = { };
 twic.twitter.api.BASE_URL = 'https://api.twitter.com/1.1/';
 twic.twitter.api.AUTH_URL = 'https://api.twitter.com/oauth/';
 
+twic.twitter.api.TIMELINE_TWEETS_COUNT = 30;
+
 twic.twitter.api.token = null;
 
 twic.twitter.api.rateLimitRemains = null;
@@ -92,23 +94,56 @@ twic.twitter.api.getAccessToken = function(pin, callback) {
 
 twic.twitter.api.getUserInfo = function(userId, callback) {
 	var
-		request = new twic.Request.OAuth('GET', twic.twitter.api.BASE_URL + 'users/show/' + userId + '.json'),
-		userObj;
+		request = new twic.Request.OAuth('GET', twic.twitter.api.BASE_URL + 'users/show/' + userId + '.json');
 
 	request.setRequestData('include_entities', 1);
 
 	request.send( function(error, request) {
+		var obj;
+
 		if (!error) {
 			twic.twitter.api.parseGlobalLimit(request);
 
-			userObj = JSON.parse(request.responseText);
+			obj = JSON.parse(request.responseText);
 
-			if (userObj) {
-				callback(null, userObj);
+			// @todo failed to parse callback?
+
+			if (obj) {
+				callback(null, obj);
 				return;
 			}
 		}
 
 		callback(error);
 	} );
+};
+
+twic.twitter.api.getTimeline = function(userId, sinceId, token, callback) {
+	var
+		request = new twic.Request.OAuth('GET', twic.twitter.api.BASE_URL + 'statuses/home_timeline/' + userId + '.json');
+
+	request.setRequestData('count', twic.twitter.api.TIMELINE_TWEETS_COUNT);
+	request.setRequestData('include_entities', 1);
+
+	if (sinceId) {
+		request.setRequestData('since_id', sinceId);
+	}
+
+	request.send( function(error, request) {
+		var
+			obj;
+
+		if (error) {
+			callback(error);
+			return;
+		}
+
+		obj = JSON.parse(request.responseText);
+
+		// @todo failed to parse callback?
+
+		if (obj) {
+			callback(null, obj);
+		}
+	}, token);
 };
