@@ -82,7 +82,7 @@ twic.Request.OAuth.prototype.sign = function(token) {
 	);
 };
 
-twic.Request.OAuth.prototype.checkTimestamp = function(req) {
+twic.Request.OAuth.checkTimestamp = function(req) {
 	var
 		checkFields = ['Last-Modified', 'Date'],
 		checkHeader,
@@ -130,7 +130,7 @@ twic.Request.OAuth.prototype.send = function(callback, token) {
 			if (error
 				&& twic.Request.Error.UNAUTHORIZED === error.code
 				&& !isRetry
-				&& request.checkTimestamp(error.request)
+				&& twic.Request.OAuth.checkTimestamp(error.request)
 			) {
 				isRetry = true;
 
