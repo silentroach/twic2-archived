@@ -43,6 +43,7 @@ twic.twitter.api.resetToken = function() {
 	twic.twitter.api.token = null;
 };
 
+// @todo rethink
 twic.twitter.api.parseGlobalLimit = function(request) {
 	var
 		remains = request.getResponseHeader('x-rate-limit-remaining'),
@@ -102,7 +103,7 @@ twic.twitter.api.getUserInfo = function(userId, callback) {
 		var obj;
 
 		if (!error) {
-			twic.twitter.api.parseGlobalLimit(request);
+			// twic.twitter.api.parseGlobalLimit(request);
 
 			obj = JSON.parse(request.responseText);
 
