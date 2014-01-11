@@ -46,7 +46,7 @@ twic.Account.prototype.getUser = function(callback) {
 		return;
 	}
 
-	twitter.getUser(account.userId, function(error, user) {
+	twic.twitter.getUser(account.userId, function(error, user) {
 		if (!error) {
 			account.user = user;
 		}
