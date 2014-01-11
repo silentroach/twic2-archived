@@ -13,10 +13,12 @@ I'm trying to rewrite the previous version from scratch. It can be [found here](
 
 You need to install [NodeJS](http://nodejs.org/), [grunt](http://gruntjs.com/getting-started) and run this:
 
-	git clone https://github.com/silentroach/twic.git
-	cd twic
-	npm install
-	grunt
+```shell
+git clone https://github.com/silentroach/twic.git
+cd twic
+npm install
+grunt
+```
 
 Then you need to add the `src` folder to your Chrome extensions list in developer mode.
 
@@ -28,7 +30,9 @@ Please respect the [EditorConfig](http://editorconfig.org/) project settings.
 
 To remove the extension database you need to open background page console (click on the "background page" link in Chrome extensions list page) and run this:
 
-	indexedDB.deleteDatabase(twic.db.name);
+```js
+indexedDB.deleteDatabase(twic.db.name);
+```
 
 ## Thanks
 
