@@ -12,7 +12,7 @@ twic.Router = function() {
 	window.addEventListener('popstate', function(event) {
 		event.preventDefault();
 
-		router.changePage(location.pathname);
+		router.changePage(location.hash);
 	} );
 };
 
@@ -35,17 +35,16 @@ twic.Router.prototype.handleUrl = function(url) {
 
 	window.history.pushState(state, null, url);
 
-	this.changePage(location.pathname);
+	this.changePage(location.hash);
 };
 
 /**
  * @param {string} path Url path
  */
-twic.Router.prototype.changePage = function(path) {
+twic.Router.prototype.changePage = function(hash) {
 	var
+		path = hash.slice(1),
 		pathParts = path.split('/');
-
-	pathParts.shift();
 
 	if (this.currentPage !== pathParts[0]) {
 		if (this.currentPage) {

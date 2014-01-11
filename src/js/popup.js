@@ -28,6 +28,6 @@
 		new twic.Page.Accounts(document.getElementById('page-accounts'))
 	);
 
-	router.handleUrl('/accounts');
+	router.handleUrl('#accounts');
 
 }() );
