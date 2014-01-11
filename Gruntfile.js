@@ -29,18 +29,19 @@ module.exports = function(grunt) {
 					'src/_locales/**/messages.json'
 				]
 			}
-		}
+		},
 
-		// crx: {
-		// 	dist: {
-		// 		manifest: 'src/manifest.json',
-		// 		options: {
-		// 			'test': 2
-		// 		}
-		// 	}
-		// }
+		crx: {
+			dist: {
+				manifest: 'src/manifest.json',
+				options: {
+					'test': 2
+				}
+			}
+		}
 	} );
 
+	grunt.loadNpmTasks('grunt-chrome-ext');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 
 	grunt.registerMultiTask(
@@ -138,7 +139,7 @@ module.exports = function(grunt) {
 	);
 
 	grunt.registerTask('test', [ 'checkLocales', 'jshint' ]);
-	// grunt.registerTask('build', [ 'crx' ]);
+	grunt.registerTask('build', [ 'crx' ]);
 	grunt.registerTask('default', ['generate'/*, 'crx'*/ ]);
 
 };

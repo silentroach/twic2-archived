@@ -14,11 +14,17 @@ I'm trying to rewrite the previous version from scratch. It can be [found here](
 You need to install [NodeJS](http://nodejs.org/), [grunt](http://gruntjs.com/getting-started) and run this:
 
 ```shell
+git clone https://github.com/silentroach/grunt-chrome-ext
+cd grunt-chrome-ext
+npm link
+cd ..
 git clone https://github.com/silentroach/twic.git
 cd twic
 npm install
 grunt
 ```
+
+`grunt-chrome-ext` package is used to build extension. Later when it will be stable, it will be a `package.json` dependence.
 
 Then you need to add the `src` folder to your Chrome extensions list in developer mode.
 
