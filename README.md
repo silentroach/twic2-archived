@@ -11,7 +11,7 @@ I'm trying to rewrite the previous version from scratch. It can be [found here](
 
 ## How to help
 
-You need to install [NodeJS](http://nodejs.org/), [grunt](http://gruntjs.com/getting-started) and run this:
+You need to install [NodeJS](http://nodejs.org/), [grunt](http://gruntjs.com/getting-started), [PhantomJS](http://phantomjs.org/) and run this:
 
 ```shell
 git clone https://github.com/silentroach/grunt-chrome-ext
@@ -22,6 +22,7 @@ git clone https://github.com/silentroach/twic.git
 cd twic
 npm install
 grunt
+phantomjs phantomjs/rasterize.js
 ```
 
 `grunt-chrome-ext` package is used to build extension. Later when it will be stable, it will be a `package.json` dependence.
