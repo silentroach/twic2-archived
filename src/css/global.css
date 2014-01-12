@@ -60,7 +60,7 @@ a {
     clear: both;
     }
 
-img.avatar {
+.user-avatar {
     border-radius: 3px;
     max-width: 48px;
     }

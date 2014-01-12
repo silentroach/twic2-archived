@@ -63,6 +63,7 @@ twic.Account.prototype.getPopupData = function(callback) {
 		}
 
 		callback(null, {
+			id: user.id,
 			nick: user.nick,
 			name: user.name,
 			imageUrl: user.imageUrl

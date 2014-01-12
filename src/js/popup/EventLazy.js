@@ -7,7 +7,8 @@ twic.EventLazy.LAZY_TIMEOUT = 250;
 twic.utils.inherits(twic.EventLazy, twic.Event);
 
 twic.EventLazy.prototype.send = function(callback, lazyCallback) {
-	var timeout;
+	var
+		timeout = setTimeout(lazyCallback, twic.EventLazy.LAZY_TIMEOUT);
 
 	twic.Event.prototype.send.call(this, function(reply) {
 		clearTimeout(timeout);
@@ -16,6 +17,4 @@ twic.EventLazy.prototype.send = function(callback, lazyCallback) {
 			callback(reply);
 		}
 	} );
-
-	timeout = setTimeout(lazyCallback, twic.EventLazy.LAZY_TIMEOUT);
 };

@@ -3,6 +3,8 @@ twic.Page.Accounts = function(element, accountListElement, accountTemplate) {
 
 	this.accountListElement = accountListElement;
 	this.accountTemplate = accountTemplate;
+
+	this.accountBlocks = [ ];
 };
 
 twic.Page.Accounts.path = 'accounts';
@@ -25,5 +27,17 @@ twic.Page.Accounts.prototype.initialize = function() {
 };
 
 twic.Page.Accounts.prototype.onAccounts = function(data) {
-	console.log(data);
+	var
+		accounts = this,
+		accountBlock;
+
+	this.accountListElement.classList.remove(twic.Page.Accounts.LOADING_CLASS);
+
+	data.forEach( function(data) {
+		accountBlock = new twic.Block.Account(accounts.accountTemplate);
+		accountBlock.setData(data);
+		accounts.accountListElement.appendChild(accountBlock.render());
+
+		accounts.accountBlocks.push(accountBlock);
+	} );
 };
