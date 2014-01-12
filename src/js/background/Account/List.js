@@ -70,7 +70,6 @@ twic.AccountList.prototype.getPopupData = function(callback) {
 			callback();
 		} );
 	}, function() {
-		console.log(obj);
 		callback(obj);
 	} );
 };
