@@ -11,7 +11,6 @@ twic.EventLazy.prototype.send = function(callback, lazyCallback) {
 
 	twic.Event.prototype.send.call(this, function(reply) {
 		clearTimeout(timeout);
-		timeout = 0;
 
 		if (callback) {
 			callback(reply);
