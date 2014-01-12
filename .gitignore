@@ -1,3 +1,4 @@
 node_modules
 src/js/_generated/*.js
 src/img/_generated/*
+!src/img/_generated/README.md
