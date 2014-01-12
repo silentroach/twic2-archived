@@ -29,7 +29,9 @@ twic.User.prototype.fillFromJSON = function(json) {
 	this.name = json['name'];
 	this.description = json['description'];
 	this.locationName = json['location'];
-	this.imageUrl = json['profile_image_url_https'];
+
+	this.imageUrl = json['profile_image_url_https']
+		.replace(/_normal\./, '{size}.');
 
 	this.registeredStamp = Math.round(+new Date(json['created_at']) / 1000);
 
