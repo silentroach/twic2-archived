@@ -40,6 +40,16 @@ var
 			zoom: .125,
 			source: 'img/logo.svg'
 		},
+		// ------------------------------------
+		'img/_generated/toolbar@x2.png': {
+			size: { width: 38, height: 38 },
+			source: 'img/toolbar.svg'
+		},
+		'img/_generated/toolbar.png': {
+			size: { width: 19, height: 19 },
+			zoom: .5,
+			source: 'img/toolbar.svg'
+		},
 	};
 
 function convert(config) {
@@ -55,9 +65,7 @@ function convert(config) {
 	settings.size.top = 0;
 	page.clipRect = settings.size;
 
-	if (settings.zoom) {
-		page.zoomFactor = settings.zoom;
-	}
+	page.zoomFactor = settings.zoom ? settings.zoom : 1;
 
 	page.open(srcPath + settings.source, function(status) {
 		if (status !== 'success') {
