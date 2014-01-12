@@ -25,7 +25,11 @@
 	}, true);
 
 	router.registerPage(
-		new twic.Page.Accounts(document.getElementById('page-accounts'))
+		new twic.Page.Accounts(
+			document.getElementById('page-accounts'),
+			document.getElementById('page-accounts-list'),
+			document.getElementById('template-account')
+		)
 	);
 
 	router.handleUrl('#accounts');

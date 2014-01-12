@@ -42,7 +42,7 @@ twic.Account.prototype.getUser = function(callback) {
 		account = this;
 
 	if (account.user) {
-		callback(account.user);
+		callback(null, account.user);
 		return;
 	}
 
@@ -52,5 +52,20 @@ twic.Account.prototype.getUser = function(callback) {
 		}
 
 		callback(error, user);
+	} );
+};
+
+twic.Account.prototype.getPopupData = function(callback) {
+	this.getUser( function(error, user) {
+		if (error) {
+			callback(error);
+			return;
+		}
+
+		callback(null, {
+			nick: user.nick,
+			name: user.name,
+			imageUrl: user.imageUrl
+		} );
 	} );
 };

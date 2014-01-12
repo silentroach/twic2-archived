@@ -39,6 +39,10 @@
 		return true;
 	} );
 
+	dispatcher.on('getAccounts', function(event, callback) {
+		accounts.getPopupData(callback);
+	} );
+
 	accounts.load( function() {
 		console.log('loaded');
 	} );
