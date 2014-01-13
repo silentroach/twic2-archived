@@ -18,3 +18,15 @@ body, #pages, .page {
 	.toolbar.toolbar-bottom {
 		border-width: 1px 0 0 0;
 		}
+
+.button-icon {
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	}
+.button-svg {
+	background-size: 16px 16px;
+	background-repeat: no-repeat;
+	background-color: transparent;
+	background-position: 50% 50%;
+	}

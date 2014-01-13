@@ -6,3 +6,11 @@
 		background-size: 18px;
 		height: 80px;
 		}
+
+#page-accounts .toolbar-top {
+	text-align: center;
+	}
+
+#accounts-add {
+	background-image: url('/img/glyphicons/plus.svg');
+	}
