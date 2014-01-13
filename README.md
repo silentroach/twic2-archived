@@ -22,7 +22,7 @@ git clone https://github.com/silentroach/twic.git
 cd twic
 npm install
 grunt
-phantomjs phantomjs/rasterize.js
+phantomjs tools/rasterizeImages.js
 ```
 
 `grunt-chrome-ext` package is used to build extension. Later when it will be stable, it will be a `package.json` dependence.
