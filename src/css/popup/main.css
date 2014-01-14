@@ -14,9 +14,19 @@ body, #pages, .page {
 	}
 	.toolbar.toolbar-top {
 		border-width: 0 0 1px 0;
+		padding-bottom: 0px;
 		}
 	.toolbar.toolbar-bottom {
 		border-width: 1px 0 0 0;
+		padding-top: 0px;
+		}
+
+.button {
+	opacity: .5;
+	transition: opacity 0.15s ease-in-out;
+	}
+	.button:hover {
+		opacity: 1;
 		}
 
 .button-icon {
