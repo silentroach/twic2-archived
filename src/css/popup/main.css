@@ -24,6 +24,7 @@ body, #pages, .page {
 .button {
 	opacity: .5;
 	transition: opacity 0.15s ease-in-out;
+	cursor: pointer;
 	}
 	.button:hover {
 		opacity: 1;

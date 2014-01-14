@@ -24,6 +24,8 @@ twic.Page.Accounts.prototype.initialize = function() {
 	event.send(this.onAccounts.bind(this), function() {
 		page.accountListElement.classList.add(twic.Page.Accounts.LOADING_CLASS);
 	} );
+
+	this.container.querySelector('#account-add').addEventListener('click', this.onAccountAdd.bind(this));
 };
 
 twic.Page.Accounts.prototype.onAccounts = function(data) {
@@ -40,4 +42,15 @@ twic.Page.Accounts.prototype.onAccounts = function(data) {
 
 		accounts.accountBlocks.push(accountBlock);
 	} );
+};
+
+twic.Page.Accounts.prototype.onAccountAdd = function(e) {
+	var
+		event = new twic.Event();
+
+	e.preventDefault();
+	e.stopPropagation();
+
+	event.type = 'authStart';
+	event.send();
 };

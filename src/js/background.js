@@ -42,7 +42,12 @@
 			} );
 		} );
 
+		// mark as async
 		return true;
+	} );
+
+	dispatcher.on('authStart', function(event) {
+		twic.twitter.startAuthentication();
 	} );
 
 	dispatcher.on('getAccounts', function(event, callback) {
