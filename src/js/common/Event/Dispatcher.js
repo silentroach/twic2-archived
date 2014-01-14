@@ -27,5 +27,5 @@ twic.EventDispatcher.prototype.emit = function(request, sender, sendResponse) {
 	event.type = requestType;
 	event.data = request['data'];
 
-	return this.listeners[requestType](event, sendResponse);
+	return this.listeners[requestType](event, sendResponse, sender);
 };

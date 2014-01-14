@@ -13,30 +13,40 @@
 		pinElement = pinWrapperElement.querySelector('code');
 
 		if (pinElement) {
-			resultElement = document.createElement('p');
-			resultElement.classList.add('twic');
-			changeResultText('auth_in_progress');
-			pinWrapperElement.appendChild(resultElement);
-
 			event = new twic.Event();
-
-			event.type = 'auth';
-			event.data = {
-				'pin': pinElement.innerText
-			};
-
+			event.type = 'authCheck';
 			event.send( function(result) {
-				if (undefined !== result['error']
-					|| !result.name
-				) {
-					if (result['error'] === twic.global.ALREADY_AUTHENTICATED) {
-						changeResultText('auth_already');
-					} else {
-						changeResultText('auth_failed');
-					}
-				} else {
-					changeResultText('auth_success', result['name']);
+				if (!result) {
+					return;
 				}
+
+				document.body.classList.add('twic');
+
+				resultElement = document.createElement('p');
+				resultElement.classList.add('twic');
+				changeResultText('auth_in_progress');
+				pinWrapperElement.appendChild(resultElement);
+
+				event = new twic.Event();
+
+				event.type = 'auth';
+				event.data = {
+					'pin': pinElement.innerText
+				};
+
+				event.send( function(result) {
+					if (undefined !== result['error']
+						|| !result.name
+					) {
+						if (result['error'] === twic.global.ALREADY_AUTHENTICATED) {
+							changeResultText('auth_already');
+						} else {
+							changeResultText('auth_failed');
+						}
+					} else {
+						changeResultText('auth_success', result['name']);
+					}
+				} );
 			} );
 		}
 	}

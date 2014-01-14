@@ -11,11 +11,17 @@
 		dispatcher.emit.bind(dispatcher)
 	);
 
-	dispatcher.on('auth', function(event, callback) {
+	dispatcher.on('authCheck', function(event, callback, sender) {
+		callback(
+			twic.twitter.checkAuthenticationWindowId(sender.tab.windowId)
+		);
+	} );
+
+	dispatcher.on('auth', function(event, callback, sender) {
 		var
 			account;
 
-		twic.twitter.authorize(event.data['pin'], function(error, token, user) {
+		twic.twitter.authorize(sender.tab.windowId, event.data['pin'], function(error, token, user) {
 			if (error) {
 				callback( {
 					'error': twic.global.ERROR

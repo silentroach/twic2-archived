@@ -1,5 +1,13 @@
 twic.twitter = { };
 
+/**
+ * Windows ids with authentication flow started
+ * @private
+ */
+twic.twitter.authWindowsIds = { };
+
+twic.twitter.AUTH_SESSION_TIMEOUT = 300;
+
 twic.twitter.startAuthentication = function(login) {
 	twic.twitter.api.resetToken();
 
@@ -17,11 +25,39 @@ twic.twitter.startAuthentication = function(login) {
 			height: 650,
 			focused: true,
 			type: 'popup'
+		}, function(cw) {
+			twic.twitter.authWindowsIds[cw.id] = twic.Timestamp.now();
 		} );
 	} );
 };
 
-twic.twitter.authorize = function(pin, callback) {
+/**
+ * Will check if window is opened by us
+ * @param {Number} windowId Window id
+ */
+twic.twitter.checkAuthenticationWindowId = function(windowId) {
+	var
+		timestamp = twic.twitter.authWindowsIds[windowId];
+
+	if (undefined === timestamp) {
+		return false;
+	}
+
+	if (twic.Timestamp.now() - timestamp > twic.twitter.AUTH_SESSION_TIMEOUT) {
+		delete twic.twitter.authWindowsIds[windowId];
+		return false;
+	}
+
+	return true;
+};
+
+twic.twitter.authorize = function(windowId, pin, callback) {
+	if (!twic.twitter.checkAuthenticationWindowId(windowId)) {
+		return;
+	}
+
+	delete twic.twitter.authWindowsIds[windowId];
+
 	twic.twitter.api.getAccessToken(pin, function(error, token, userId) {
 		if (error) {
 			callback(error);
@@ -81,3 +117,19 @@ twic.twitter.getUser = function(userId, callback) {
 		} );
 	} );
 };
+
+/**
+ * Cleanup authentication windows ids
+ *
+ * @todo refactor all windows management to somewhere
+ */
+setInterval( function() {
+	var
+		windowId;
+
+	for (windowId in twic.twitter.authWindowsIds) {
+		if (twic.Timestamp.now() - twic.twitter.authWindowsIds[windowId] > twic.twitter.AUTH_SESSION_TIMEOUT) {
+			delete twic.twitter.authWindowsIds[windowId];
+		}
+	}
+}, twic.twitter.AUTH_SESSION_TIMEOUT * 1000 );

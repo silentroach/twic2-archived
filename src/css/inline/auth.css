@@ -1,7 +1,7 @@
-#oauth_pin p {
+body.twic #oauth_pin p {
 	display: none !important;
 	}
 
-#oauth_pin p.twic {
+body.twic #oauth_pin p.twic {
 	display: block !important;
 	}
