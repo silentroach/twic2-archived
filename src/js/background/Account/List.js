@@ -12,6 +12,13 @@ twic.AccountList.prototype.add = function(account) {
 	++this.length;
 };
 
+twic.AccountList.prototype.remove = function(userId) {
+	if (undefined !== this.accounts[userId]) {
+		delete this.accounts[userId];
+		--this.length;
+	}
+};
+
 twic.AccountList.prototype.save = function(callback) {
 	var
 		obj = { },
