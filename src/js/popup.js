@@ -3,9 +3,10 @@
 	var
 		router = new twic.Router();
 
-	twic.browser.getPlatform( function(alias) {
-		document.body.classList.add(alias);
-	} );
+	twic.browser.getPlatform()
+		.then( function(platform) {
+			document.body.classList.add(platform);
+		} );
 
 	window.addEventListener('click', function(e) {
 		if (e.target

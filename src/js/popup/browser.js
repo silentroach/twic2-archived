@@ -8,30 +8,32 @@ twic.browser.platforms = {
 
 twic.browser.platform = null;
 
-twic.browser.getPlatform = function(callback) {
-	var
-		platform;
+twic.browser.getPlatform = function() {
+	return new Promise( function(resolve) {
+		var
+			platform;
 
-	if (twic.browser.platform) {
-		callback(twic.browser.platform);
-		return;
-	}
-
-	chrome.runtime.getPlatformInfo( function(info) {
-		switch (info['os']) {
-			case 'mac':
-				platform = twic.browser.platforms.OSX;
-				break;
-			case 'win':
-				platform = twic.browser.platforms.WINDOWS;
-				break;
-			default:
-				platform = twic.browser.platforms.LINUX;
-				break;
+		if (twic.browser.platform) {
+			resolve(twic.browser.platform);
+			return;
 		}
 
-		twic.browser.platform = platform;
-		callback(platform);
+		chrome.runtime.getPlatformInfo( function(info) {
+			switch (info['os']) {
+				case 'mac':
+					platform = twic.browser.platforms.OSX;
+					break;
+				case 'win':
+					platform = twic.browser.platforms.WINDOWS;
+					break;
+				default:
+					platform = twic.browser.platforms.LINUX;
+					break;
+			}
+
+			twic.browser.platform = platform;
+			resolve(platform);
+		} );
 	} );
 };
 
