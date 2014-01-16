@@ -93,29 +93,36 @@ twic.twitter.api.getAccessToken = function(pin, callback) {
 	} );
 };
 
-twic.twitter.api.getUserInfo = function(userId, callback) {
-	var
-		request = new twic.Request.OAuth('GET', twic.twitter.api.BASE_URL + 'users/show/' + userId + '.json');
+twic.twitter.api.getUserInfo = function(userId) {
+	return new Promise( function(resolve, reject) {
+		var
+			request = new twic.Request.OAuth(
+				'GET',
+				twic.twitter.api.BASE_URL + 'users/show/' + userId + '.json'
+			);
 
-	request.setRequestData('include_entities', 1);
+		request.setRequestData('include_entities', 1);
 
-	request.send( function(error, request) {
-		var obj;
+		request.send( function(error, request) {
+			var obj;
 
-		if (!error) {
+			if (error) {
+				reject(error);
+				return;
+			}
+
 			// twic.twitter.api.parseGlobalLimit(request);
 
 			obj = JSON.parse(request.responseText);
 
 			// @todo failed to parse callback?
 
-			if (obj) {
-				callback(null, obj);
-				return;
+			if (!obj) {
+				reject();
 			}
-		}
 
-		callback(error);
+			resolve(obj);
+		} );
 	} );
 };
 

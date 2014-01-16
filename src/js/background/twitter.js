@@ -88,33 +88,29 @@ twic.twitter.getUser = function(userId, callback) {
 			return;
 		}
 
-		twic.twitter.api.getUserInfo(userId, function(error, userObj) {
-			var
-				models = [ ],
-				user, tweet;
+		twic.twitter.api.getUserInfo(userId)
+			.then( function(userObj) {
+				var
+					models = [ ],
+					user, tweet;
 
-			if (error) {
-				callback(error);
-				return;
-			}
+				user = new twic.User();
+				user.fillFromJSON(userObj);
+				models.push(user);
 
-			user = new twic.User();
-			user.fillFromJSON(userObj);
-			models.push(user);
+				if (userObj['status']) {
+					tweet = new twic.Tweet();
+					tweet.fillFromJSON(userObj['status']);
+					tweet.userId = user.id;
+					models.push(tweet);
+				}
 
-			if (userObj['status']) {
-				tweet = new twic.Tweet();
-				tweet.fillFromJSON(userObj['status']);
-				tweet.userId = user.id;
-				models.push(tweet);
-			}
-
-			async.forEachSeries(models, function(model, finished) {
-				model.save(finished);
-			}, function() {
-				callback(null, user);
+				async.forEachSeries(models, function(model, finished) {
+					model.save(finished);
+				}, function() {
+					callback(null, user);
+				} );
 			} );
-		} );
 	} );
 };
 
