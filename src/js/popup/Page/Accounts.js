@@ -25,7 +25,14 @@ twic.Page.Accounts.prototype.initialize = function() {
 		page.accountListElement.classList.add(twic.Page.Accounts.LOADING_CLASS);
 	} );
 
-	this.container.querySelector('#account-add').addEventListener('click', this.onAccountAdd.bind(this));
+	this.container
+		.querySelector('#account-add')
+		.addEventListener('click', function(e) {
+			e.preventDefault();
+			e.stopPropagation();
+
+			page.onAccountAdd.call(page);
+		} );
 };
 
 twic.Page.Accounts.prototype.onAccounts = function(data) {
@@ -34,6 +41,10 @@ twic.Page.Accounts.prototype.onAccounts = function(data) {
 		accountBlock;
 
 	this.accountListElement.classList.remove(twic.Page.Accounts.LOADING_CLASS);
+
+	if (0 === data.length) {
+		this.onAccountAdd.call(this);
+	}
 
 	data.forEach( function(data) {
 		accountBlock = new twic.Block.Account(accounts.accountTemplate);
@@ -44,12 +55,9 @@ twic.Page.Accounts.prototype.onAccounts = function(data) {
 	} );
 };
 
-twic.Page.Accounts.prototype.onAccountAdd = function(e) {
+twic.Page.Accounts.prototype.onAccountAdd = function() {
 	var
 		event = new twic.Event();
-
-	e.preventDefault();
-	e.stopPropagation();
 
 	event.type = 'authStart';
 	event.send();

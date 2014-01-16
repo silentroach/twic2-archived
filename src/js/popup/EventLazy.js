@@ -2,7 +2,7 @@ twic.EventLazy = function() {
 	twic.Event.call(this);
 };
 
-twic.EventLazy.LAZY_TIMEOUT = 250;
+twic.EventLazy.LAZY_TIMEOUT = 200;
 
 twic.utils.inherits(twic.EventLazy, twic.Event);
 
