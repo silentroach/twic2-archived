@@ -1,5 +1,5 @@
+<img src="https://rawgithub.com/silentroach/twic/master/src/img/logo.svg" align="left" />
 # Twic Extension
-<img src="https://rawgithub.com/silentroach/twic/master/src/img/logo.svg" align="right" />
 [![Dependency Status](https://gemnasium.com/silentroach/twic.png)](https://gemnasium.com/silentroach/twic)
 
 The opensource twitter client for Chromium based browsers.
