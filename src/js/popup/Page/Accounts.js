@@ -16,6 +16,7 @@ twic.utils.inherits(twic.Page.Accounts, twic.Page);
 twic.Page.Accounts.prototype.initialize = function() {
 	var
 		page = this,
+		addButton = this.container.querySelector('#account-add'),
 		event = new twic.EventLazy();
 
 	twic.Page.prototype.initialize.call(this);
@@ -25,11 +26,12 @@ twic.Page.Accounts.prototype.initialize = function() {
 		page.accountListElement.classList.add(twic.Page.Accounts.LOADING_CLASS);
 	} );
 
-	this.container
-		.querySelector('#account-add')
+	addButton
 		.addEventListener('click', function(e) {
 			e.preventDefault();
 			e.stopPropagation();
+
+			addButton.classList.add(twic.Page.Accounts.LOADING_CLASS);
 
 			page.onAccountAdd.call(page);
 		} );

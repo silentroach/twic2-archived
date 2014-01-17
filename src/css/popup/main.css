@@ -41,3 +41,7 @@ body, #pages, .page {
 	background-color: transparent;
 	background-position: 50% 50%;
 	}
+
+.loading {
+	background: transparent url('/img/spinner.svg') no-repeat 50% 50%;
+	}
