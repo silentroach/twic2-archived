@@ -1,4 +1,3 @@
-<img src="https://rawgithub.com/silentroach/twic/master/src/img/logo.svg" align="left" />
 # Twic Extension
 [![Dependency Status](https://gemnasium.com/silentroach/twic.png)](https://gemnasium.com/silentroach/twic)
 
