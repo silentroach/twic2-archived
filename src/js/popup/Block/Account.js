@@ -19,7 +19,10 @@ twic.Block.Account.prototype.render = function() {
 		blockElement = twic.Block.prototype.render.call(this);
 
 	blockElement.querySelector('.user-nick').innerText = this.nick;
-	blockElement.querySelector('.user-avatar').src = this.imageUrl.replace('{size}', '_bigger');
+	blockElement.querySelector('.user-avatar').src = this.imageUrl.replace(
+		'{size}',
+		twic.browser.isRetina ? '_reasonably_small' : '_bigger'
+	);
 
 	return blockElement;
 };
