@@ -16,7 +16,8 @@ twic.utils.inherits(twic.Page.Accounts, twic.Page);
 twic.Page.Accounts.prototype.initialize = function() {
 	var
 		page = this,
-		addButton = this.container.querySelector('#account-add'),
+		// @todo initialize button somewhere else
+		addButton = document.querySelector('#main-button-add-account'),
 		event = new twic.EventLazy();
 
 	twic.Page.prototype.initialize.call(this);

@@ -7,23 +7,19 @@
 		height: 50px;
 		}
 
-#page-accounts .toolbar-top {
-	text-align: center;
-	}
-
 #page-accounts .account {
 	display: inline-block;
 	padding: 10px 20px;
 	}
 
-#account-add {
+#main-button-add-account {
 	background-image: url('/img/glyphicons/plus.svg');
 	}
-	#account-add.loading {
+	#main-button-add-account.loading {
 		background: transparent url('/img/spinner.svg') no-repeat 50% 50%;
 		background-size: 16px;
 		}
 
-#help {
+#main-button-help {
 	background-image: url('/img/glyphicons/help.svg');
 	}
