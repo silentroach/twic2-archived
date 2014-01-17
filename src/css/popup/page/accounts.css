@@ -23,3 +23,7 @@
 		background: transparent url('/img/spinner.svg') no-repeat 50% 50%;
 		background-size: 16px;
 		}
+
+#help {
+	background-image: url('/img/glyphicons/help.svg');
+	}

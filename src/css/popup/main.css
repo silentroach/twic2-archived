@@ -20,6 +20,9 @@ body, #pages, .page {
 		border-width: 1px 0 0 0;
 		padding-top: 0px;
 		}
+	.toolbar .button {
+		margin: 0 5px;
+		}
 
 .button {
 	opacity: .5;
@@ -36,7 +39,7 @@ body, #pages, .page {
 	height: 24px;
 	}
 .button-svg {
-	background-size: 16px 16px;
+	background-size: 24px;
 	background-repeat: no-repeat;
 	background-color: transparent;
 	background-position: 50% 50%;
