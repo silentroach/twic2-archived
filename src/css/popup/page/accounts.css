@@ -11,6 +11,11 @@
 	text-align: center;
 	}
 
+#page-accounts .account {
+	display: inline-block;
+	padding: 10px 20px;
+	}
+
 #account-add {
 	background-image: url('/img/glyphicons/plus.svg');
 	}
