@@ -1,4 +1,4 @@
-<div style="float: right"><img src="https://rawgithub.com/silentroach/twic/master/src/img/logo.svg" /></div>
+<img src="https://rawgithub.com/silentroach/twic/master/src/img/logo.svg" align="right" />
 
 # Twic Extension
 [![Dependency Status](https://gemnasium.com/silentroach/twic.png)](https://gemnasium.com/silentroach/twic)
