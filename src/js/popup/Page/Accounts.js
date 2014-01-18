@@ -18,6 +18,7 @@ twic.Page.Accounts.prototype.initialize = function() {
 		page = this,
 		// @todo initialize button somewhere else
 		addButton = document.querySelector('#main-button-add-account'),
+		aboutButton = document.querySelector('#main-button-about'),
 		event = new twic.EventLazy();
 
 	twic.Page.prototype.initialize.call(this);
@@ -27,15 +28,17 @@ twic.Page.Accounts.prototype.initialize = function() {
 		page.accountListElement.classList.add(twic.Page.Accounts.LOADING_CLASS);
 	} );
 
-	addButton
-		.addEventListener('click', function(e) {
-			e.preventDefault();
-			e.stopPropagation();
+	aboutButton.title = twic.i18n.translate('button_title_about');
+	addButton.title = twic.i18n.translate('button_title_add_account');
 
-			addButton.classList.add(twic.Page.Accounts.LOADING_CLASS);
+	addButton.addEventListener('click', function(e) {
+		e.preventDefault();
+		e.stopPropagation();
 
-			page.onAccountAdd.call(page);
-		} );
+		addButton.classList.add(twic.Page.Accounts.LOADING_CLASS);
+
+		page.onAccountAdd.call(page);
+	} );
 };
 
 twic.Page.Accounts.prototype.onAccounts = function(data) {

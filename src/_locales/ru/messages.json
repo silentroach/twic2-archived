@@ -16,5 +16,14 @@
 				"example": "Игорь"
 			}
 		}
+	},
+
+	"button_title_add_account": {
+		"message": "добавить учетную запись",
+		"description": "Подсказка на кнопке добавления аккаунта"
+	},
+	"button_title_about": {
+		"message": "О расширении",
+		"description": "Подсказка на кнопке о расширении"
 	}
 }

@@ -16,5 +16,14 @@
 				"example": "Igor"
 			}
 		}
+	},
+
+	"button_title_add_account": {
+		"message": "Add account",
+		"description": "Add account button title"
+	},
+	"button_title_about": {
+		"message": "About Twic",
+		"description": "About Twic button title"
 	}
 }
