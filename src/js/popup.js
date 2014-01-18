@@ -8,6 +8,7 @@
 			document.body.classList.add(platform);
 		} );
 
+/*
 	window.addEventListener('click', function(e) {
 		if (e.target
 			&& 'A' === e.target.nodeName
@@ -26,6 +27,7 @@
 			}
 		}
 	}, true);
+*/
 
 	router.registerPage(
 		new twic.Page.Accounts(
