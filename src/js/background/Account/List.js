@@ -62,21 +62,21 @@ twic.AccountList.prototype.load = function(callback) {
 
 twic.AccountList.prototype.getPopupData = function(callback) {
 	var
-		list = this,
-		reply = [ ],
-		userId;
+		list = this;
 
-	async.forEach(Object.keys(this.accounts), function(userId, callback) {
-		list.accounts[userId].getPopupData( function(error, data) {
-			if (error) {
-				callback();
-				return;
-			}
+	return new Promise( function(resolve, reject) {
+		var
+			reply = [ ],
+			userId;
 
-			reply.push(data);
-			callback();
+		async.forEach(Object.keys(list.accounts), function(userId, callback) {
+			list.accounts[userId].getPopupData()
+				.then( function(data) {
+					reply.push(data);
+					callback();
+				} );
+		}, function() {
+			resolve(reply);
 		} );
-	}, function() {
-		callback(reply);
 	} );
 };

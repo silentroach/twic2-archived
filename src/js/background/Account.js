@@ -56,17 +56,22 @@ twic.Account.prototype.getUser = function(callback) {
 };
 
 twic.Account.prototype.getPopupData = function(callback) {
-	this.getUser( function(error, user) {
-		if (error) {
-			callback(error);
-			return;
-		}
+	var
+		account = this;
 
-		callback(null, {
-			id: user.id,
-			nick: user.nick,
-			name: user.name,
-			imageUrl: user.imageUrl
+	return new Promise( function(resolve, reject) {
+		account.getUser( function(error, user) {
+			if (error) {
+				reject(error);
+				return;
+			}
+
+			resolve( {
+				id: user.id,
+				nick: user.nick,
+				name: user.name,
+				imageUrl: user.imageUrl
+			} );
 		} );
 	} );
 };

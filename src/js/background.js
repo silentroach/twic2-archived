@@ -55,7 +55,12 @@
 	} );
 
 	dispatcher.on('getAccounts', function(event, callback) {
-		accounts.getPopupData(callback);
+		accounts.getPopupData()
+			.then( function(data) {
+				callback(data);
+			} );
+
+		return true;
 	} );
 
 	accounts.load( function() {
