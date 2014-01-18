@@ -12,6 +12,10 @@
 	padding: 10px 20px;
 	}
 
+#page-accounts .account-remove {
+	background-image: url('/img/glyphicons/remove.svg');
+	}
+
 #main-button-add-account {
 	background-image: url('/img/glyphicons/plus.svg');
 	}
