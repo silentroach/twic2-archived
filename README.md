@@ -53,3 +53,7 @@ indexedDB.deleteDatabase(twic.db.name);
 [Kalashnikov Igor](mailto:igor.kalashnikov@me.com)
 
 This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/silentroach/twic/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
