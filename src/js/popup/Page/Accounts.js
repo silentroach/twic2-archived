@@ -63,5 +63,7 @@ twic.Page.Accounts.prototype.onAccountAdd = function() {
 		event = new twic.Event();
 
 	event.type = 'authStart';
-	event.send();
+	event.send( function() {
+		window.close();
+	} );
 };

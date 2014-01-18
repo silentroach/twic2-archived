@@ -11,22 +11,26 @@ twic.twitter.AUTH_SESSION_TIMEOUT = 300;
 twic.twitter.startAuthentication = function(login) {
 	twic.twitter.api.resetToken();
 
-	twic.twitter.api.getRequestToken( function(token) {
-		var
-			url = twic.twitter.api.AUTH_URL + 'authorize?oauth_token=' + token.token;
+	return new Promise( function(resolve, reject) {
+		twic.twitter.api.getRequestToken( function(token) {
+			var
+				url = twic.twitter.api.AUTH_URL + 'authorize?oauth_token=' + token.token;
 
-		if (login) {
-			url += '&screen_name=' + login;
-		}
+			if (login) {
+				url += '&screen_name=' + login;
+			}
 
-		chrome.windows.create( {
-			url: url,
-			width: 600,
-			height: 650,
-			focused: true,
-			type: 'popup'
-		}, function(cw) {
-			twic.twitter.authWindowsIds[cw.id] = twic.Timestamp.now();
+			chrome.windows.create( {
+				url: url,
+				width: 600,
+				height: 650,
+				focused: true,
+				type: 'popup'
+			}, function(cw) {
+				twic.twitter.authWindowsIds[cw.id] = twic.Timestamp.now();
+
+				resolve();
+			} );
 		} );
 	} );
 };
