@@ -1,4 +1,9 @@
 {
+	"manifest_description": {
+		"message": "Минималистичный клиент Twitter",
+		"description": "Описание расширения"
+	},
+
 	"auth_in_progress": {
 		"message": "Авторизация...",
 		"description": "Статус на странице авторизации"

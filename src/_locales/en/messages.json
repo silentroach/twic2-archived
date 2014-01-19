@@ -1,4 +1,9 @@
 {
+	"manifest_description": {
+		"message": "Twic is a minimalist Twitter client",
+		"description": "Extension description"
+	},
+
 	"auth_in_progress": {
 		"message": "Authenticating...",
 		"description": "Inline page authentication progress status"
