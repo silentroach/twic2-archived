@@ -1,8 +1,12 @@
 twic.Page = function(element) {
+	EventEmitter.call(this);
+
 	this.initialized = false;
 
 	this.container = element;
 };
+
+twic.utils.inherits(twic.Page, EventEmitter);
 
 twic.Page.prototype.activate = function() {
 	if (!this.initialized) {

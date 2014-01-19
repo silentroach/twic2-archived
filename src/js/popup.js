@@ -1,41 +1,62 @@
 ( function() {
 
 	var
-		router = new twic.Router();
+		mainToolbar = document.getElementById('main-toolbar'),
+		addButton = mainToolbar.querySelector('#main-button-add-account'),
+		settingsButton = mainToolbar.querySelector('#main-button-settings'),
+		aboutButton = mainToolbar.querySelector('#main-button-about'),
+		// ---
+		router = new twic.Router(),
+		page;
 
 	twic.browser.getPlatform()
 		.then( function(platform) {
 			document.body.classList.add(platform);
 		} );
 
-/*
-	window.addEventListener('click', function(e) {
-		if (e.target
-			&& 'A' === e.target.nodeName
-		) {
-			e.preventDefault();
-			e.stopPropagation();
+	aboutButton.title = twic.i18n.translate('button_title_about');
+	addButton.title = twic.i18n.translate('button_title_add_account');
+	settingsButton.title = twic.i18n.translate('button_title_settings');
 
-			if ('chrome-extension:' === e.target.protocol) {
-				router.handleUrl(e.target.href);
-			} else {
-				chrome.tabs.create( {
-					url: e.target.href
-				} );
+	function addAccount() {
+		var
+			event = new twic.Event();
 
-				window.close();
-			}
-		}
-	}, true);
-*/
+		addButton.classList.add('loading');
 
-	router.registerPage(
-		new twic.Page.Accounts(
-			document.getElementById('page-accounts'),
-			document.getElementById('page-accounts-list'),
-			document.getElementById('template-account')
-		)
+		event.type = 'authStart';
+		event.send( function() {
+			window.close();
+		} );
+	}
+
+	addButton.addEventListener('click', function(e) {
+		e.preventDefault();
+		e.stopPropagation();
+
+		addAccount();
+	} );
+
+	/**
+	 * Pages
+	 */
+
+	// accounts
+	page = new twic.Page.Accounts(
+		document.getElementById('page-accounts'),
+		document.getElementById('page-accounts-list'),
+		document.getElementById('template-account')
 	);
+
+	page.on('accountAdd', function() {
+		addAccount();
+	} );
+
+	router.registerPage(page);
+
+	/**
+	 * Init
+	 */
 
 	router.handleUrl('#accounts');
 
