@@ -36,3 +36,8 @@
 #main-button-about {
 	background-image: url('/img/glyphicons/about.svg');
 	}
+
+#main-button-settings {
+	background-image: url('/img/glyphicons/settings.svg');
+	}
+

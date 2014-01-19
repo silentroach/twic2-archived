@@ -27,6 +27,10 @@
 		"message": "добавить учетную запись",
 		"description": "Подсказка на кнопке добавления аккаунта"
 	},
+	"button_title_settings": {
+		"message": "Настройки",
+		"description": "Подсказка на кнопке вызова настроек"
+	},
 	"button_title_about": {
 		"message": "О расширении",
 		"description": "Подсказка на кнопке о расширении"
