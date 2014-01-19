@@ -76,7 +76,18 @@ twic.AccountList.prototype.getPopupData = function(callback) {
 					callback();
 				} );
 		}, function() {
-			resolve(reply);
+			resolve(
+				reply.sort( function(first, second) {
+					if (first.sorting < second.sorting) {
+						return -1;
+					} else
+					if (first.sorting > second.sorting) {
+						return 1;
+					} else {
+						return 0;
+					}
+				} )
+			);
 		} );
 	} );
 };

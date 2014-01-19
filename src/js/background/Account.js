@@ -3,6 +3,9 @@ twic.Account = function() {
 	this.oauthToken = null;
 	this.lastVisibleTweet = 0;
 
+	// field to determine account position in list
+	this.sorting = twic.Timestamp.now();
+
 	this.user = null;
 };
 
@@ -15,7 +18,8 @@ twic.Account.prototype.serialize = function() {
 		'userId': this.userId,
 		'lastVisibleTweet': this.lastVisibleTweet,
 		'oauthToken': this.oauthToken.token,
-		'oauthTokenSecret': this.oauthToken.tokenSecret
+		'oauthTokenSecret': this.oauthToken.tokenSecret,
+		'sorting': this.sorting
 	};
 };
 
@@ -26,6 +30,7 @@ twic.Account.prototype.serialize = function() {
 twic.Account.prototype.deserialize = function(data) {
 	this.userId = data['userId'];
 	this.lastVisibleTweet = data['lastVisibleTweet'];
+	this.sorting = data['sorting'];
 
 	if (data['oauthToken'] && data['oauthTokenSecret']) {
 		this.oauthToken = new twic.Request.OAuth.Token();
