@@ -21,6 +21,7 @@
 		},
 		"default_popup": "popup.html"
 	},
+	"options_page": "options.html",
 	"background": {
 		"scripts": [
 			"js/_init.js",

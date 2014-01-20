@@ -37,6 +37,15 @@
 		addAccount();
 	} );
 
+	settingsButton.addEventListener('click', function(e) {
+		e.preventDefault();
+		e.stopPropagation();
+
+		chrome.tabs.create( {
+			url: 'options.html'
+		} );
+	} );
+
 	/**
 	 * Pages
 	 */
