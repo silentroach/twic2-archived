@@ -4,6 +4,7 @@ twic.Block.Account = function(templateElement) {
 	this.id = null;
 	this.imageUrl = null;
 	this.nick = null;
+	this.userId = null;
 };
 
 twic.utils.inherits(twic.Block.Account, twic.Block);
@@ -12,6 +13,7 @@ twic.Block.Account.prototype.setData = function(data) {
 	this.id = data['id'];
 	this.imageUrl = data['imageUrl'];
 	this.nick = data['nick'];
+	this.userId = data['id'];
 };
 
 twic.Block.Account.prototype.render = function() {
@@ -23,6 +25,7 @@ twic.Block.Account.prototype.render = function() {
 		'{size}',
 		twic.browser.isRetina ? '_reasonably_small' : '_bigger'
 	);
+	blockElement.querySelector('.user-link').href = '#timeline/' + this.userId;
 
 	return blockElement;
 };

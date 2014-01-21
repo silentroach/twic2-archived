@@ -20,6 +20,12 @@
 		#page-accounts .account:hover {
 			opacity: 1;
 			}
+		#page-accounts .account .user-link {
+			color: black;
+			}
+			#page-accounts .account .user-link:hover {
+				text-decoration: none;
+				}
 
 #page-accounts .account-remove {
 	background-image: url('/img/glyphicons/remove.svg');
