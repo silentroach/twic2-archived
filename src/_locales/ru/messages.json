@@ -34,5 +34,10 @@
 	"button_title_about": {
 		"message": "О расширении",
 		"description": "Подсказка на кнопке о расширении"
+	},
+
+	"title_settings": {
+		"message": "Настройки",
+		"description": "Заголовок вкладки с настройками"
 	}
 }

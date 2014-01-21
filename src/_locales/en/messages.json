@@ -34,5 +34,10 @@
 	"button_title_about": {
 		"message": "About Twic",
 		"description": "About Twic button title"
+	},
+
+	"title_settings": {
+		"message": "Settings",
+		"description": "Settings tab title"
 	}
 }
