@@ -1,6 +1,0 @@
-/**
- * @constructor
- */
-twic.ModelList = function() {
-
-};

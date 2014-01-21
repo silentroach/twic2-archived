@@ -1,4 +1,4 @@
-twic.ConnectionHandler = function() {
+twic.Connection = function() {
 	EventEmitter.call(this);
 
 	this.isOnline = null;
@@ -7,12 +7,12 @@ twic.ConnectionHandler = function() {
 	window.addEventListener('offline', this.onStateChanged.bind(this));
 };
 
-twic.utils.inherits(twic.ConnectionHandler, EventEmitter);
+twic.utils.inherits(twic.Connection, EventEmitter);
 
 /**
  * @private
  */
-twic.ConnectionHandler.prototype.onStateChanged = function() {
+twic.Connection.prototype.onStateChanged = function() {
 	this.isOnline = navigator.onLine;
 
 	this.emit('change', this.isOnline);

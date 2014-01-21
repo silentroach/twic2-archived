@@ -1,7 +1,7 @@
 ( function() {
 
 	var
-		event, resultElement,
+		msg, resultElement,
 		pinWrapperElement = document.querySelector('#oauth_pin'),
 		pinElement = document.querySelector('#oauth_pin code');
 
@@ -13,9 +13,9 @@
 		pinElement = pinWrapperElement.querySelector('code');
 
 		if (pinElement) {
-			event = new twic.Event();
-			event.type = 'authCheck';
-			event.send( function(result) {
+			msg = new twic.Message();
+			msg.type = 'authCheck';
+			msg.send( function(result) {
 				if (!result) {
 					return;
 				}
@@ -27,14 +27,14 @@
 				changeResultText('auth_in_progress');
 				pinWrapperElement.appendChild(resultElement);
 
-				event = new twic.Event();
+				msg = new twic.Message();
 
-				event.type = 'auth';
-				event.data = {
+				msg.type = 'auth';
+				msg.data = {
 					'pin': pinElement.innerText
 				};
 
-				event.send( function(result) {
+				msg.send( function(result) {
 					if (undefined !== result['error']
 						|| !result.name
 					) {

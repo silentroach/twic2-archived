@@ -5,7 +5,7 @@
 			chrome.storage.sync,
 			chrome.storage.local
 		),
-		dispatcher = new twic.EventDispatcher();
+		dispatcher = new twic.MessageDispatcher();
 
 	chrome.runtime.onMessage.addListener(
 		dispatcher.emit.bind(dispatcher)

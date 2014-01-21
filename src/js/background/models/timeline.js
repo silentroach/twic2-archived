@@ -14,4 +14,4 @@ twic.Timeline = function(userId) {
  */
 twic.Timeline.collectionName = 'timeline';
 
-twic.utils.inherits(twic.Timeline, twic.ModelList);
+// twic.utils.inherits(twic.Timeline, twic.ModelList);

@@ -16,12 +16,12 @@ twic.utils.inherits(twic.Page.Accounts, twic.Page);
 twic.Page.Accounts.prototype.initialize = function() {
 	var
 		page = this,
-		event = new twic.EventLazy();
+		msg = new twic.MessageLazy();
 
 	twic.Page.prototype.initialize.call(this);
 
-	event.type = 'getAccounts';
-	event.send(
+	msg.type = 'getAccounts';
+	msg.send(
 		this.onAccounts.bind(this),
 		function() {
 			page.accountListElement.classList.add(twic.Page.Accounts.LOADING_CLASS);

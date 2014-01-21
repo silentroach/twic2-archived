@@ -20,12 +20,12 @@
 
 	function addAccount() {
 		var
-			event = new twic.Event();
+			msg = new twic.Message();
 
 		addButton.classList.add('loading');
 
-		event.type = 'authStart';
-		event.send( function() {
+		msg.type = 'authStart';
+		msg.send( function() {
 			window.close();
 		} );
 	}
