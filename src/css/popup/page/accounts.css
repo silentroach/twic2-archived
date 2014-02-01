@@ -3,8 +3,8 @@
 	text-align: center;
 	}
 	#page-accounts-list.loading {
-		background-size: 18px;
 		height: 50px;
+		background-size: 18px;
 		}
 
 #page-accounts .account {
@@ -13,8 +13,8 @@
 	cursor: pointer;
 	}
 	#page-accounts .account {
-		opacity: 0.8;
 		border: 1px solid transparent;
+		opacity: 0.8;
 		transition: opacity 0.15s ease-in-out;
 		}
 		#page-accounts .account:hover {

@@ -7,10 +7,10 @@ body, #pages, .page {
 	}
 
 .toolbar {
-	background-color: #eaeaea;
+	padding: 3px;
 	border: 0px solid rgba(0, 0, 0, .05);
 	border-width: 0;
-	padding: 3px;
+	background-color: #eaeaea;
 	text-align: center;
 	}
 	.toolbar.toolbar-top {
@@ -24,11 +24,11 @@ body, #pages, .page {
 		}
 
 button {
-	opacity: .5;
-	transition: opacity 0.15s ease-in-out;
-	cursor: pointer;
-	border: 0;
 	outline: 0;
+	border: 0;
+	opacity: .5;
+	cursor: pointer;
+	transition: opacity 0.15s ease-in-out;
 	}
 	button:hover {
 		opacity: 1;
@@ -40,10 +40,10 @@ button {
 	height: 24px;
 	}
 .button-svg {
-	background-size: 24px;
-	background-repeat: no-repeat;
 	background-color: transparent;
 	background-position: 50% 50%;
+	background-size: 24px;
+	background-repeat: no-repeat;
 	}
 
 .loading {
