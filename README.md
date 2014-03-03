@@ -54,6 +54,6 @@ indexedDB.deleteDatabase(twic.db.name);
 
 This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
 
-
+[![Code Climate](https://codeclimate.com/github/silentroach/twic.png)](https://codeclimate.com/github/silentroach/twic)
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/silentroach/twic/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
